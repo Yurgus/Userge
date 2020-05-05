@@ -1,0 +1,23 @@
+# Copyright (C) 2020 by Yurgus, < https://github.com/yurgus >.
+#
+# This file is part of < https://github.com/UsergeTeam/Userge > project,
+# and is released under the "GNU v3.0 License Agreement".
+# Please see < https://github.com/uaudith/Userge/blob/master/LICENSE >
+#
+# All rights reserved.
+
+
+from datetime import datetime
+from userge import userge, Message
+
+
+@userge.on_cmd("/start", about={'header': "Стартанём?"})
+async def pingme(message: Message):
+    start = datetime.now()
+
+    await message.edit('`Pong!`')
+
+    end = datetime.now()
+    m_s = (end - start).microseconds / 1000
+
+    await message.edit(f"**Pong!**\n`{m_s} ms`")
